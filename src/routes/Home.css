@@ -46,3 +46,17 @@
 .countdown-form input[type="submit"]:hover {
   opacity: 1;
 }
+
+#author {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+#author h4 {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #8435de;
+}

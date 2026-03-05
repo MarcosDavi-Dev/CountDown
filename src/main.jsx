@@ -1,5 +1,5 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 
@@ -8,6 +8,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Pages
 import Home from "./routes/Home.jsx";
 import Countdown from "./routes/Countdown.jsx";
+
+// Context
+import { CountdownProvider } from "./context/CountdonwContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +29,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <CountdownProvider>
+      <RouterProvider router={router} />
+    </CountdownProvider>
+  </React.StrictMode>,
 );

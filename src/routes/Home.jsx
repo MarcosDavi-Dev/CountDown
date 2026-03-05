@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { CountdownContext } from "../context/CountdonwContext";
+
+import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 
@@ -7,6 +11,10 @@ const Home = () => {
   const [date, setDate] = useState();
   const [image, setImage] = useState();
   const [color, setColor] = useState();
+
+  const { setEvent } = useContext(CountdownContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +26,9 @@ const Home = () => {
       color,
     };
 
-    console.log(eventObject);
+    setEvent(eventObject);
+
+    navigate("/countdown");
   };
 
   return (
@@ -58,11 +68,24 @@ const Home = () => {
           <input
             type="color"
             name="color"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setColor(e.target.value)}
           />
         </label>
         <input type="submit" value="Enviar" />
       </form>
+      <div id="author">
+        <h4>
+          Desenvolvido por{" "}
+          <a
+            href="https://github.com/MarcosDavi-Dev/CountDown"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Marcos Davi
+          </a>{" "}
+          &copy; 2026
+        </h4>
+      </div>
     </div>
   );
 };
